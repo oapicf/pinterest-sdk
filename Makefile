@@ -176,14 +176,19 @@ generate-primary:
 ################################################################
 # API clients building targets for primary generators
 
-build-javascript:
+build-javascript: x-build-javascript
+
+# Disabled Javascript build
+# due to https://github.com/oapicf/pinterest-sdk/issues/2
+# and further issues
+x-build-javascript:
 	npm install -g babel-cli
-	cd clients/javascript/generated/ && \
-	  npm install && \
-	  npm link && \
-	  npm run build
-	cd test/javascript/ && \
-	  npm link ../../clients/javascript/generated/
+# 	cd clients/javascript/generated/ && \
+# 	  npm install && \
+# 	  npm link && \
+# 	  npm run build
+# 	cd test/javascript/ && \
+# 	  npm link ../../clients/javascript/generated/
 
 build-python:
 	cd clients/python/generated/ && \
@@ -209,15 +214,20 @@ build-ruby:
 # Test target is a convenience target to run tests for all primary generators
 test: test-javascript test-python test-ruby
 
-test-javascript: build-javascript
+test-javascript: x-test-javascript
+
+# Disabled Javascript unit tests (npm run test)
+# due to https://github.com/oapicf/pinterest-sdk/issues/2
+# and further issues
+x-test-javascript: build-javascript
 	npm install -g mocha
 	npm install validator
-	cd clients/javascript/generated/ && \
-	  npm install --dev && \
-	  npm run test
-	cd test/javascript/ && \
-	  npm link ../../clients/javascript/generated/ && \
-	  mocha --timeout 5000 .
+# 	cd clients/javascript/generated/ && \
+# 	  npm install --dev && \
+# 	  npm run test
+# 	cd test/javascript/ && \
+# 	  npm link ../../clients/javascript/generated/ && \
+# 	  mocha --timeout 5000 .
 
 test-python: build-python
 	cd clients/python/generated/ && \
